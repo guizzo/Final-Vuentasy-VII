@@ -1,0 +1,141 @@
+.text-center {
+    text-align: center;
+}
+
+:disabled{
+    opacity:.4;
+}
+
+.healthbar-container{
+    position:relative;
+    overflow:hidden;
+}
+
+.healthbar {
+    width: 80%;
+    height: 40px;
+    background-color: #eee;
+    margin: auto;
+    transition: width 500ms;
+}
+
+.healthbar.green{
+    background-color:green;
+}
+
+.healthbar.yellow{
+    background-color:yellow;
+}
+
+.healthbar.red{
+    background-color:red;
+}
+
+.health{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:2;
+    color:#000;
+}
+
+.picture{
+    width:80%;
+    height:200px;
+    background-size:contain;
+    background-position:center center;
+    background-repeat:no-repeat;
+    margin:0 auto;
+}
+
+.picture__player{
+    background-image:url('../player.png');
+}
+
+.picture__monster{
+    background-image:url('../monster.png');
+}
+
+.controls, .log {
+    margin-top: 30px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 3px 6px #ccc;
+}
+
+.turn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.log ul {
+    list-style: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.log ul li {
+    margin: 5px;
+}
+
+.log ul .player-turn {
+    color: blue;
+    background-color: #e4e8ff;
+}
+
+.log ul .monster-turn {
+    color: red;
+    background-color: #ffc0c1;
+}
+
+button {
+    font-size: 20px;
+    background-color: #eee;
+    padding: 12px;
+    box-shadow: 0 1px 1px black;
+    margin: 10px;
+}
+
+#start-game {
+    background-color: #aaffb0;
+}
+
+#start-game:hover {
+    background-color: #76ff7e;
+}
+
+#attack {
+    background-color: #ff7367;
+}
+
+#attack:hover {
+    background-color: #ff3f43;
+}
+
+#special-attack {
+    background-color: #ffaf4f;
+}
+
+#special-attack:hover {
+    background-color: #ff9a2b;
+}
+
+#heal {
+    background-color: #aaffb0;
+}
+
+#heal:hover {
+    background-color: #76ff7e;
+}
+
+#give-up {
+    background-color: #ffffff;
+}
+
+#give-up:hover {
+    background-color: #c7c7c7;
+}
