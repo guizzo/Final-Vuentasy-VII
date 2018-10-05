@@ -37,9 +37,42 @@ let app = new Vue({
             this.monsterHealth -= playerDiceRoll;
             this.playerHealth -= monsterDiceRoll;
             this.limitGauge += 2;
-            this.messageBus.push(
+            this.messageBus.unshift(
                 {
-                    message: 'Player dealt ' + playerDiceRoll + ' damage at Monster!',
+                    message: 'Player dealt ' + playerDiceRoll + ' HP at Monster!',
+                    subject: 'player'
+                },
+                {
+                    message: 'Monster dealt ' + monsterDiceRoll + ' HP at Player!',
+                    subject: 'monster'
+                }
+            );
+        },
+        limitBreak: function() {
+            let playerDiceRoll = this._rollDice(30);
+            let monsterDiceRoll = this._rollDice(15);
+            this.monsterHealth -= playerDiceRoll;
+            this.playerHealth -= monsterDiceRoll;
+            this.limitGauge = 0;
+            this.messageBus.unshift(
+                {
+                    message: 'Player dealt ' + playerDiceRoll + ' HP at Monster!',
+                    subject: 'player'
+                },
+                {
+                    message: 'Monster dealt ' + monsterDiceRoll + ' HP at Player!',
+                    subject: 'monster'
+                }
+            );
+        },
+        heal: function() {
+            let healed = this._rollDice(30);
+            let monsterDiceRoll = this._rollDice(15);
+            this.playerHealth += healed;
+            this.playerHealth -= monsterDiceRoll;
+            this.messageBus.unshift(
+                {
+                    message: 'Player healed for ' + healed + ' HP!',
                     subject: 'player'
                 },
                 {
@@ -47,15 +80,6 @@ let app = new Vue({
                     subject: 'monster'
                 }
             );
-        },
-        limitBreak: function() {
-            this.monsterHealth -= this._rollDice(30);
-            this.playerHealth -= this._rollDice(30);
-            this.limitGauge = 0;
-        },
-        heal: function() {
-            this.playerHealth += this._rollDice(30);
-            this.playerHealth -= this._rollDice(15);
         },
         giveUp: function() {
             this.monsterHealth = 100;
